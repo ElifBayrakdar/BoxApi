@@ -30,6 +30,7 @@ namespace BoxApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
+                throw;
             }
 
             return Ok();

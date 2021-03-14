@@ -7,7 +7,7 @@ using BoxApi.Services;
 namespace BoxApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("boxes")]
     public class BoxController : ControllerBase
     {
         private readonly IBoxService _boxService;
@@ -20,8 +20,7 @@ namespace BoxApi.Controllers
         }
 
         [HttpPost]
-        [Route("new-box")]
-        public async Task<ActionResult> Publish()
+        public async Task<ActionResult> Create()
         {
             try
             {
@@ -32,7 +31,6 @@ namespace BoxApi.Controllers
                 _logger.LogError(ex.Message);
                 throw;
             }
-
             return Ok();
         }
     }

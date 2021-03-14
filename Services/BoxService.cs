@@ -21,12 +21,18 @@ namespace BoxApi.Services
         {
             try
             {
-                BoxCreated msg = new BoxCreated(){Id = new Random(10).Next(), Description = "Box Created."};
+                //Insert Box to DB
+                await Task.Delay(5000);
+
+                //Publish BoxCreated event
+                int id = new Random().Next(1000);
+                BoxCreated msg = new BoxCreated(){Id = id, Description = "Box Created."};
                 await _endpoint.Publish(msg);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
+                throw;
             }
         }
     }
